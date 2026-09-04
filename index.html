@@ -1,155 +1,350 @@
 <!DOCTYPE html>
-<!--
-  ================================================================
-  READ THIS BEFORE YOU PASTE ANYTHING
-
-  When Gemini gives you a page, you do NOT paste it into a part of
-  this file. You replace the entire file.
-
-  Click into the editor, press Ctrl+A (Cmd+A on Mac), press Delete,
-  then paste. Everything here is meant to be thrown away.
-
-  Do that only AFTER your live link works. Get the link first.
-  ================================================================
--->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My first site</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0d1d30;
-    --card: #142a44;
-    --line: #27466a;
-    --aqua: #6de1d7;
-    --text: #ffffff;
-    --muted: #94a9bf;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--navy);
-    color: var(--text);
-    font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-    line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    padding: 6vh 20px;
-  }
-  main { width: 100%; max-width: 640px; }
-  .badge {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin-bottom: 18px;
-  }
-  h1 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 800;
-    font-size: clamp(38px, 9vw, 68px);
-    letter-spacing: -0.05em;
-    line-height: 1.02;
-    margin: 0 0 8px;
-  }
-  .name {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: clamp(18px, 4vw, 24px);
-    letter-spacing: -0.04em;
-    color: var(--aqua);
-    margin: 0 0 24px;
-  }
-  p.lead { font-size: 18px; color: var(--muted); margin: 0 0 34px; }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 26px 28px;
-    margin-bottom: 18px;
-  }
-  .card h2 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin: 0 0 16px;
-  }
-  ol { margin: 0; padding-left: 20px; }
-  li { margin-bottom: 12px; color: var(--muted); }
-  li:last-child { margin-bottom: 0; }
-  li b { color: var(--text); font-weight: 700; }
-  code {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 0.92em;
-    background: #0a1727;
-    border: 1px solid var(--line);
-    border-radius: 5px;
-    padding: 1px 6px;
-    color: var(--aqua);
-  }
-  a { color: var(--aqua); }
-  footer {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #6e839a;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Barbara Restaurant Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #faf9f5;
+            --card-bg: #ffffff;
+            --primary: #183028;
+            --accent: #c26d42;
+            --text-main: #2b2b2b;
+            --text-muted: #6a6a6a;
+            --border-color: #eae6df;
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 4rem;
+        }
+
+        header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .hero {
+            max-width: 800px;
+            margin: 3rem auto 2rem;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1.25rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .restaurant-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+        }
+
+        .card-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .restaurant-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--primary);
+        }
+
+        .price {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .cuisine {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .neighborhood {
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .must-order {
+            background: rgba(194, 109, 66, 0.1);
+            color: var(--accent);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media(max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
 </head>
 <body>
-<main>
 
-  <span class="badge">Cal Poly Vibe Coding &middot; Session 01</span>
+    <header>
+        <a href="#" class="logo">SB Bites</a>
+    </header>
 
-  <h1>It&rsquo;s live.</h1>
+    <section class="hero">
+        <h1>Santa Barbara Table</h1>
+        <p>A personal curated guide to the finest flavors, hidden coastal spots, and neighborhood patios on the American Riviera.</p>
+    </section>
 
-  <!-- Step 5: change the name below to yours, then commit. -->
-  <p class="name">Built by Enna Garcia </p>
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterRestaurants('all', this)">All Places</button>
+        <button class="filter-btn" onclick="filterRestaurants('Seafood', this)">Seafood</button>
+        <button class="filter-btn" onclick="filterRestaurants('Mexican', this)">Mexican</button>
+        <button class="filter-btn" onclick="filterRestaurants('Californian', this)">Californian</button>
+        <button class="filter-btn" onclick="filterRestaurants('Bakery & Cafe', this)">Bakery & Cafe</button>
+    </div>
 
-  <p class="lead">
-    This page is on the internet. Anyone you send this link to can open it,
-    on any device, right now. You made that happen in about five minutes.
-  </p>
+    <main class="container" id="restaurant-grid">
+        <!-- Restaurant 1 -->
+        <article class="restaurant-card" data-category="Seafood">
+            <img class="card-image" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Santa Barbara Shellfish Co">
+            <div class="card-content">
+                <div class="card-header">
+                    <h2 class="restaurant-name">Santa Barbara Shellfish Co.</h2>
+                    <span class="price">$$$</span>
+                </div>
+                <div class="cuisine">Seafood</div>
+                <p class="description">Perched directly over the water on Stearns Wharf, offering ultra-fresh local catches, crab, and local sea urchin.</p>
+                <div class="footer-info">
+                    <span class="neighborhood">📍 Stearns Wharf</span>
+                    <span class="must-order">Try: Local Uni</span>
+                </div>
+            </div>
+        </article>
 
-  <div class="card">
-    <h2>Three things, in this order</h2>
-    <ol>
-      <li><b>Put your name on it.</b> Edit <code>index.html</code>, change
-        YOUR NAME HERE above, commit, refresh this page.</li>
-      <li><b>Submit this link.</b> Go to
-        <a href="https://www.calpolyvibecoding.com/">calpolyvibecoding.com</a>,
-        make an account, and paste this URL in. That is how you get counted,
-        and how Claude seats get assigned.</li>
-      <li><b>Then build.</b> Open Gemini, get a page, and replace this entire
-        file with it.</li>
-    </ol>
-  </div>
+        <!-- Restaurant 2 -->
+        <article class="restaurant-card" data-category="Mexican">
+            <img class="card-image" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="La Super-Rica Taqueria">
+            <div class="card-content">
+                <div class="card-header">
+                    <h2 class="restaurant-name">La Super-Rica Taqueria</h2>
+                    <span class="price">$</span>
+                </div>
+                <div class="cuisine">Mexican</div>
+                <p class="description">The legendary roadside taco stand famous for handmade corn tortillas and comforting homestyle dishes.</p>
+                <div class="footer-info">
+                    <span class="neighborhood">📍 Eastside</span>
+                    <span class="must-order">Try: Super-Rica Especial</span>
+                </div>
+            </div>
+        </article>
 
-  <div class="card">
-    <h2>How to replace this page</h2>
-    <ol>
-      <li>Copy what Gemini gives you with the <b>copy button</b> on the code
-        block. Do not click and drag.</li>
-      <li>Open <code>index.html</code> here and click the pencil icon.</li>
-      <li><b>Ctrl+A</b> (<b>Cmd+A</b> on Mac), then <b>Delete</b>. All of it.
-        Yes, really.</li>
-      <li>Paste, commit, refresh.</li>
-    </ol>
-  </div>
+        <!-- Restaurant 3 -->
+        <article class="restaurant-card" data-category="Californian">
+            <img class="card-image" src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?auto=format&fit=crop&w=600&q=80" alt="The Lark">
+            <div class="card-content">
+                <div class="card-header">
+                    <h2 class="restaurant-name">The Lark</h2>
+                    <span class="price">$$$</span>
+                </div>
+                <div class="cuisine">Californian</div>
+                <p class="description">Located in the vibrant Funk Zone, serving locally-sourced family-style shared plates in a stylish, rustic space.</p>
+                <div class="footer-info">
+                    <span class="neighborhood">📍 The Funk Zone</span>
+                    <span class="must-order">Try: Crispy Brussels Sprouts</span>
+                </div>
+            </div>
+        </article>
 
-  <footer>
-    Nothing on this page is precious. It exists so the link has something to
-    show before you have something of your own.
-  </footer>
+        <!-- Restaurant 4 -->
+        <article class="restaurant-card" data-category="Bakery & Cafe">
+            <img class="card-image" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Helena Avenue Bakery">
+            <div class="card-content">
+                <div class="card-header">
+                    <h2 class="restaurant-name">Helena Avenue Bakery</h2>
+                    <span class="price">$$</span>
+                </div>
+                <div class="cuisine">Bakery & Cafe</div>
+                <p class="description">Artisan breads, pastries, and hearty breakfast sandwiches served in a bright, industrial-chic warehouse setting.</p>
+                <div class="footer-info">
+                    <span class="neighborhood">📍 The Funk Zone</span>
+                    <span class="must-order">Try: Morning Bun</span>
+                </div>
+            </div>
+        </article>
 
-</main>
+        <!-- Restaurant 5 -->
+        <article class="restaurant-card" data-category="Californian">
+            <img class="card-image" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Bouchon">
+            <div class="card-content">
+                <div class="card-header">
+                    <h2 class="restaurant-name">Bouchon</h2>
+                    <span class="price">$$$$</span>
+                </div>
+                <div class="cuisine">Californian</div>
+                <p class="description">An intimate wine-country bistro focusing on local ingredients paired exclusively with Santa Barbara County wines.</p>
+                <div class="footer-info">
+                    <span class="neighborhood">📍 Downtown</span>
+                    <span class="must-order">Try: Duck Confit</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Restaurant 6 -->
+        <article class="restaurant-card" data-category="Seafood">
+            <img class="card-image" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Brothers Fish and Chips">
+            <div class="card-content">
+                <div class="card-header">
+                    <h2 class="restaurant-name">Brothers Fish & Chips</h2>
+                    <span class="price">$$</span>
+                </div>
+                <div class="cuisine">Seafood</div>
+                <p class="description">Laid-back harbor spot serving golden, crispy seafood baskets right next to the fishing boats.</p>
+                <div class="footer-info">
+                    <span class="neighborhood">📍 Harbor</span>
+                    <span class="must-order">Try: Fish & Chips</span>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SB Bites. Handcrafted in Santa Barbara.</p>
+    </footer>
+
+    <script>
+        function filterRestaurants(category, btnElement) {
+            // Update active state on buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Filter cards
+            const cards = document.querySelectorAll('.restaurant-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
